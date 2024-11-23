@@ -4,7 +4,7 @@
 =
 Тема: <u>Макроэкономика стран</u>  
 =
-#Названия проектов:
-1. front - vue-project
-2. back - 60911YVI2
+### Названия проектов:
+- **frontend** - vue-project
+- **backend** - 60911YVI2
 
