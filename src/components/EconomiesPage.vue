@@ -1,12 +1,12 @@
 <template>
   <DataTable
-    :value="events"
+    :value="economies"
     :lazy="true"
     :loading="dataStore.loading"
     :paginator="true"
     :rows="perpage"
     :rowsPerPageOptions="[2, 5, 10]"
-    :totalRecords=events_total
+    :totalRecords=economies_total
     @page="onPageChange"
     responsive-layout="scroll"
     :leading="true"
@@ -14,8 +14,9 @@
   >
     <Column field="id" header="№"/>
     <Column field="countryName" header="Страна" />
-    <Column field="description" header="Описание"/>
-    <Column field="date" header="Дата проведения"/>
+    <Column field="year" header="Год"/>
+    <Column field="GDP" header="ВВП (ППС) млрд. долл."/>
+    <Column field="GDP_person" header="ВВП/чел (ППС) долл."/>
   </DataTable>
 </template>
 <script>
@@ -24,7 +25,7 @@ import Column from "primevue/column";
 import {useDataStore} from '@/stores/dataStore';
 
 export default {
-  name: "EventsPage",
+  name: "EconomiesPage",
   components: {DataTable, Column},
   data() {
     return{
@@ -34,33 +35,34 @@ export default {
     }
   },
   computed: {
-    events() {
-      return this.dataStore.events.map((events) => {
+    economies() {
+      return this.dataStore.economies.map((economy) => {
         const country = this.dataStore.countries.find(
-          (c) => c.id === events.country_id
+          (c) => c.id === economy.country_id
         );
         return {
-          ...events,
+          ...economy,
           countryName: country ? country.name : "Неизвестно",
         };
       });
     },
-    events_total() {
-      return this.dataStore.events_total;
+    economies_total() {
+      return this.dataStore.economies_total;
     }
   },
   mounted() {
-    console.log('Events component MOUNTED!');
-    this.dataStore.get_events();
-    this.dataStore.get_events_total();
-    console.log('Events=', this.events);
+    console.log('Economies component MOUNTED!');
+    this.dataStore.get_economies();
+    this.dataStore.get_economies_total();
+    this.dataStore.get_countries();
+    console.log('Economies=', this.economies);
   },
   methods: {
     onPageChange(event) {
       this.offset = event.first;
       this.perpage = event.rows;
       const page = Math.floor(this.offset / this.perpage);
-      this.dataStore.get_events(page, this.perpage);
+      this.dataStore.get_economies(page, this.perpage);
     }
   }
 }

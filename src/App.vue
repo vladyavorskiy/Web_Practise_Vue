@@ -71,6 +71,16 @@ export default {
           icon: 'pi pi-fw pi-calendar',
           route: '/events',
         },
+        {
+          label: 'Экономика',
+          icon: 'pi pi-fw pi-money-bill',
+          route: '/economies',
+        },
+        {
+          label: 'Товарооборот',
+          icon: 'pi pi-fw pi-sync',
+          route: '/turnovers',
+        },
       ]
     };
   },
