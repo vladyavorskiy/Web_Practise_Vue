@@ -3,7 +3,8 @@ import HomePage from '@/components/HomePage.vue';
 import CountriesPage from '@/components/CountriesPage.vue';
 import EventsPage from '@/components/EventsPage.vue';
 import TurnoversPage from '@/components/TurnoversPage.vue';
-import EconomiesPage from '@/components/EconomiesPage.vue'
+import EconomiesPage from '@/components/EconomiesPage.vue';
+import CreateCountry from '@/components/CreateCountry.vue';
 const routes = [
   {
     path: '/',
@@ -25,6 +26,10 @@ const routes = [
     path: '/turnovers',
     component: TurnoversPage,
   },
+  {
+    path: '/createCountry',
+    component: CreateCountry,
+  }
 
 ];
   const router = createRouter({

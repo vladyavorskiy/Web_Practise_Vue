@@ -40,6 +40,7 @@ import { useAuthStore } from '@/stores/authStore';
 import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
 import InputText from 'primevue/inputtext'
+
 export default {
   components: {
     PrimeButton: Button,
@@ -81,6 +82,7 @@ export default {
           icon: 'pi pi-fw pi-sync',
           route: '/turnovers',
         },
+
       ]
     };
   },
